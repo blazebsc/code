@@ -978,6 +978,7 @@ const confirmUnlinkModal = ref<InstanceType<typeof ConfirmUnlinkModal>>()
 			:backup-tip="pendingDeletionItems.map((i) => i.project?.title ?? i.file_name).join(', ')"
 			:action-disabled="ctx.isBusy.value"
 			:action-disabled-tooltip="ctx.busyMessage?.value ?? undefined"
+			:target-type="ctx.deletionContext ?? 'instance'"
 			@delete="confirmDelete"
 		/>
 		<ContentDependencyWarningModal
@@ -998,6 +999,7 @@ const confirmUnlinkModal = ref<InstanceType<typeof ConfirmUnlinkModal>>()
 			:server="ctx.deletionContext === 'server'"
 			:action-disabled="ctx.isBusy.value"
 			:action-disabled-tooltip="ctx.busyMessage?.value ?? undefined"
+			:target-type="ctx.deletionContext ?? 'instance'"
 			@update="confirmBulkUpdate"
 		/>
 		<ConfirmUnlinkModal
@@ -1007,6 +1009,7 @@ const confirmUnlinkModal = ref<InstanceType<typeof ConfirmUnlinkModal>>()
 			:backup-tip="ctx.modpack.value?.project.title"
 			:action-disabled="ctx.isBusy.value"
 			:action-disabled-tooltip="ctx.busyMessage?.value ?? undefined"
+			:target-type="ctx.deletionContext ?? 'instance'"
 			@unlink="ctx.unlinkModpack!()"
 		/>
 
